@@ -1,6 +1,6 @@
 import 'package:get/state_manager.dart';
 
-import 'api.dart';
+import '../services/services.dart';
 
 enum AppControllerStatus {
   initial,
@@ -25,7 +25,7 @@ class AppController extends GetxController {
   Future<void> fetchProducts() async {
     try {
       _status.value = AppControllerStatus.loading;
-      _products.value = await AppApi().get('https://fakestoreapi.com/products');
+      _products.value = await RemoteServer().getProducts();
       _status.value = AppControllerStatus.loaded;
     } catch (e) {
       _status.value = AppControllerStatus.error;
@@ -33,6 +33,7 @@ class AppController extends GetxController {
   }
 
   Future<void> refetchProducts() async {
+    _status.value = AppControllerStatus.initial;
     _products.clear();
     await fetchProducts();
   }

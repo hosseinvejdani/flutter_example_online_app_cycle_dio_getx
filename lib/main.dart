@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'controller.dart';
+import 'controller/controller.dart';
 
 void main() => runApp(const MyApp());
 
@@ -24,7 +23,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: FilledButton(
-          onPressed: () => Get.to(MyWidget()),
+          onPressed: () => Get.to(() => MyWidget()),
           child: const Text('Data'),
         ),
       ),
@@ -58,13 +57,13 @@ class MyWidget extends StatelessWidget {
     );
   }
 
-  Center _initWidget() => const Center(child: Text('Please Wait!'));
+  Widget _initWidget() => const SizedBox();
 
-  Center _errorWidget() => const Center(child: Text('Error fetching products'));
+  Widget _errorWidget() => const Center(child: Text('Error fetching products'));
 
-  Center _loadingWidget() => const Center(child: CircularProgressIndicator());
+  Widget _loadingWidget() => const Center(child: CircularProgressIndicator());
 
-  Column _loadedWidget() {
+  Widget _loadedWidget() {
     return Column(
       children: [
         Padding(
