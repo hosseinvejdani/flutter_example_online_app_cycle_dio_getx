@@ -23,18 +23,18 @@ class Home extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: FilledButton(
-          onPressed: () => Get.to(() => MyWidget()),
-          child: const Text('Data'),
+          onPressed: () => Get.to(() => ProductsScreen()),
+          child: const Text('Products'),
         ),
       ),
     );
   }
 }
 
-class MyWidget extends StatelessWidget {
+class ProductsScreen extends StatelessWidget {
   final appController = Get.put(AppController());
 
-  MyWidget({super.key});
+  ProductsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
